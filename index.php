@@ -24,8 +24,8 @@
 </div>
 
 <?php
-    if (isset($GET['token'])) {
-        setcookie('token', $GET['token'], 0, '/', 'teplo.volochai.ru', true, true);
+    if (isset($_GET['token'])) {
+        setcookie('token', $_GET['token'], 0, '/', 'teplo.volochai.ru', true, true);
         http_redirect('https://teplo.volochai.ru');
         exit();
     }
