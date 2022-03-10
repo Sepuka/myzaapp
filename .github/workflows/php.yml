@@ -20,5 +20,5 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         dry-run: false
         server-dir: /teplo/
-        dangerous-clean-slate: false
+        dangerous-clean-slate: true
         log-level: verbose
