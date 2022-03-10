@@ -25,7 +25,7 @@
 
 
 <div class="text-center">
-    <a href="https://oauth.vk.com/authorize?client_id=8085028&redirect_uri=http://92.53.119.174/myza/vk_auth&state=https://sepuka.github.io/myzaapp/&response_type=code&scope=email">Войти
+    <a href="https://oauth.vk.com/authorize?client_id=8085028&redirect_uri=http://92.53.119.174/myza/vk_auth&state=https://teplo.volochai.ru/&response_type=code&scope=email">Войти
         через ВКонтакте</a>
 </div>
 <div class="text-center">
