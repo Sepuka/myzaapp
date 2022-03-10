@@ -1,3 +1,12 @@
+<?php
+if (isset($_GET['token'])) {
+  setcookie('token', $_GET['token'], 0, '/', 'teplo.volochai.ru', true, true);
+  header('Location: https://teplo.volochai.ru');
+  exit();
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,14 +31,6 @@
         </div>
     </div>
 </div>
-
-<?php
-    if (isset($_GET['token'])) {
-        setcookie('token', $_GET['token'], 0, '/', 'teplo.volochai.ru', true, true);
-        http_redirect('https://teplo.volochai.ru');
-        exit();
-    }
-?>
 
 <div class="text-center">
     <a href="https://oauth.vk.com/authorize?client_id=8085028&redirect_uri=http://92.53.119.174/myza/vk_auth&state=https://teplo.volochai.ru/&response_type=code&scope=email">Войти
