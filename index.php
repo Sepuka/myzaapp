@@ -23,6 +23,13 @@
     </div>
 </div>
 
+<?php
+    if (isset($GET['token'])) {
+        setcookie('token', $GET['token'], 0, '/', 'teplo.volochai.ru', true, true);
+        http_redirect('https://teplo.volochai.ru');
+        exit();
+    }
+?>
 
 <div class="text-center">
     <a href="https://oauth.vk.com/authorize?client_id=8085028&redirect_uri=http://92.53.119.174/myza/vk_auth&state=https://teplo.volochai.ru/&response_type=code&scope=email">Войти
