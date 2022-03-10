@@ -27,7 +27,7 @@ curl_setopt($handle, CURLOPT_HEADERFUNCTION,
 );
 
 $response = curl_exec($handle);
-file_put_contents('log/output.txt', $response.PHP_EOL, FILE_APPEND);
+file_put_contents('log/log.txt', $response.PHP_EOL, FILE_APPEND);
 
 $location = $headers['Location'][0];
 $query = parse_url($location, PHP_URL_QUERY);
