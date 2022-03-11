@@ -13,7 +13,6 @@ $handle = curl_init($coreUrl);
 
 $headers = [];
 curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
-//curl_setopt($handle, CURLOPT_HEADER, 1);
 curl_setopt($handle, CURLOPT_HEADERFUNCTION,
   function ($curl, $header) use (&$headers) {
     $len = strlen($header);

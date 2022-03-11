@@ -1,3 +1,13 @@
+<?php
+
+if (empty($_COOKIE['token'])) {
+  header('Location: /login.php');
+
+  exit();
+}
+require_once 'db/db.php';
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,7 +22,7 @@
 <body>
 <div class="px-4 py-5 my-5 text-center">
     <img class="d-block mx-auto mb-4" src="/img/logo.jpeg" alt="" width="72" height="72">
-    <h1 class="display-5 fw-bold">Привет, Вася!</h1>
+    <h1 class="display-5 fw-bold">Привет, <?= getEmail($conn, $_COOKIE['token']); ?>!</h1>
     <div class="col-lg-6 mx-auto">
         <p class="lead mb-4">Твой баланс составляет 0.0043 ₿ (567 рублей), ты ещё не выводил средства на карту, с начала
             работы котла ты уже получил 14 пополнений.</p>
@@ -23,13 +33,9 @@
     </div>
 </div>
 
-<div class="text-center">
-    <a href="https://oauth.vk.com/authorize?client_id=8085028&redirect_uri=https://teplo.volochai.ru/oauth/vk.php&state=https://teplo.volochai.ru/&response_type=code&scope=email">Войти
-        через ВКонтакте</a>
-</div>
-<div class="text-center">
-    <a href="https://oauth.yandex.ru/authorize?response_type=token&client_id=c6bf4a0e603946c594f20603c2babc6d">Войти через Яндекс</a>
-</div>
+<!--<div class="text-center">-->
+<!--    <a href="https://oauth.yandex.ru/authorize?response_type=token&client_id=c6bf4a0e603946c594f20603c2babc6d">Войти через Яндекс</a>-->
+<!--</div>-->
 
 <!-- Optional JavaScript; choose one of the two! -->
 
