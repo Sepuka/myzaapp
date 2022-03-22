@@ -1,0 +1,14 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/base:2020.01
+    steps:
+      - checkout
+      - run: scp -r -o "StrictHostKeyChecking no" * myza@${duntek_host}:/var/www/duntek.ru
+
+workflows:
+  sample:
+    jobs:
+      - build
