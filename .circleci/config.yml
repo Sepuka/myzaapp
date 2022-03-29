@@ -6,6 +6,7 @@ jobs:
       - image: cimg/base:2020.01
     steps:
       - run: ssh myza@${duntek_host} "cd /var/www/ && git clone git@github.com:Sepuka/myzaapp.git duntek.ru"
+      - run: ssh myza@${duntek_host} "cd /var/www/duntek.ru && php ./init --env=Production --overwrite=All --delete=All"
       - run: ssh myza@${duntek_host} "cd /var/www/duntek.ru && composer install"
 
 workflows:
