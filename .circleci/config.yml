@@ -5,10 +5,7 @@ jobs:
     docker:
       - image: cimg/base:2020.01
     steps:
-      - checkout
-      - run: scp -r -o "StrictHostKeyChecking no" * myza@${duntek_host}:/var/www/duntek.ru
-      - run: ssh myza@${duntek_host} "chown -R :www-data /var/www/duntek.ru/log"
-      - run: ssh myza@${duntek_host} "chmod g+w /var/www/duntek.ru/log/log.txt"
+      - run: ssh myza@${duntek_host} "cd /var/www/duntek.ru && composer install"
 
 workflows:
   sample:
