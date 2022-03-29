@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: cimg/base:2020.01
     steps:
+      - run: ssh myza@${duntek_host} "cd /var/www/duntek.ru && git clone git@github.com:Sepuka/myzaapp.git"
       - run: ssh myza@${duntek_host} "cd /var/www/duntek.ru && composer install"
 
 workflows:
