@@ -2,7 +2,7 @@
 use yii\bootstrap4\Html;
 ?>
 <div class="px-4 py-5 my-5 text-center">
-    <?=Html::img( Yii::$app->request->baseUrl . '/img/logo.jpeg', ['class' => 'd-block mx-auto mb-4', 'width'=>'72', 'height'=>'72'])?>
+    <?=Html::img( '@web/images/logo.jpeg', ['class' => 'd-block mx-auto mb-4', 'width'=>'72', 'height'=>'72'])?>
     <h1 class="display-5 fw-bold">Привет, Иван!</h1>
     <div class="col-lg-6 mx-auto">
         <p class="lead mb-4">Твой баланс составляет 0.0043 ₿ (567 рублей), ты ещё не выводил средства на карту, с начала
