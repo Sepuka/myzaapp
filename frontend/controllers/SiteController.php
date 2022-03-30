@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use frontend\models\ResendVerificationEmailForm;
+use frontend\models\Users;
 use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
@@ -75,9 +76,10 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionIndex()
-    {
-        return $this->render('index');
+    public function actionIndex() {
+        $name = (new Users())->getUserName('3538cc18909cc935f714e3e8e6ce928693ebb6812bbc38ebe71b100dadef3760eb158e3b450fe2d564535');
+
+        return $this->render('index', ['name' => $name]);
     }
 
     /**
