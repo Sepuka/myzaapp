@@ -24,7 +24,6 @@ class SiteController extends Controller {
           [
             'actions' => ['login'],
             'allow'   => true,
-            'ips'     => ['127.0.0.1'],
           ],
           [
             'actions' => ['auth'],
@@ -39,7 +38,7 @@ class SiteController extends Controller {
         'denyCallback' => function($rule, $action) {
           $token = Yii::$app->request->cookies->get('token');
 
-          $this->redirect($token ? 'site/auth' : 'site/login');
+          $this->redirect($token && $action->id === 'index' ? 'site/auth' : 'site/login');
         },
       ],
     ];
