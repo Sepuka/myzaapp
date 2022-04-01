@@ -1,7 +1,13 @@
 <?php
+
 use yii\bootstrap4\Html;
 
-/** @var string $name */
+/**
+ * @var string $vk_auth
+ * @var string $name
+ * @var string $address
+ */
+
 ?>
 <div class="px-4 py-5 my-5 text-center">
     <?=Html::img( '@web/images/logo.jpeg', ['class' => 'd-block mx-auto mb-4', 'width'=>'72', 'height'=>'72'])?>
@@ -9,6 +15,7 @@ use yii\bootstrap4\Html;
     <div class="col-lg-6 mx-auto">
         <p class="lead mb-4">Твой баланс составляет 0.0043 ₿ (567 рублей), ты ещё не выводил средства на карту, с начала
             работы котла ты уже получил 14 пополнений.</p>
+        <p class="lead mb-4">Ваш адрес: <a href="https://www.blockchain.com/btc/address/<?=$address?>"><?=$address?></a></p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Запросить вывод</button>
             <button type="button" class="btn btn-outline-secondary btn-lg px-4">Посмотреть журнал</button>
@@ -16,11 +23,8 @@ use yii\bootstrap4\Html;
     </div>
 </div>
 
-<div class="text-center">
-    <a href="https://oauth.vk.com/authorize?client_id=8085028&redirect_uri=https://duntek.ru/myza/vk_auth&state=https://duntek.ru/&response_type=code&scope=email">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">вход через ВКонтакте</button>
-    </a>
-</div>
+<?=$vk_auth?>
+
 <!--<div class="text-center">-->
 <!--    <a href="https://oauth.yandex.ru/authorize?response_type=token&client_id=c6bf4a0e603946c594f20603c2babc6d">Войти через Яндекс</a>-->
 <!--</div>-->
