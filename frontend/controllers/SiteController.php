@@ -22,11 +22,7 @@ class SiteController extends Controller {
         'class'        => AccessControl::class,
         'rules'        => [
           [
-            'actions' => ['login'],
-            'allow'   => true,
-          ],
-          [
-            'actions' => ['auth'],
+            'actions' => ['login', 'logout', 'auth'],
             'allow'   => true,
           ],
           [
@@ -38,7 +34,7 @@ class SiteController extends Controller {
         'denyCallback' => function($rule, $action) {
           $token = Yii::$app->request->cookies->get('token');
 
-          $this->redirect($token && $action->id === 'index' ? 'site/auth' : 'site/login');
+          $this->redirect($token ? 'site/auth' : 'site/login');
         },
       ],
     ];
@@ -60,24 +56,24 @@ class SiteController extends Controller {
   }
 
   public function actionIndex() {
-    $vk_auth = $this->getVkAuthButton();
+    $authBlock = $this->getAuthButton();
 
     $token = $this->request->cookies->get('token');
     if ($token === null) {
-      return $vk_auth;
+      return $this->redirect('site/login');
     }
 
     $user    = Yii::$app->getUser()->identity;
     $address = (new Users())->getAddress($user->getId());
 
-    return $this->render('index', ['name' => $user['first_name'], 'vk_auth' => $vk_auth, 'address' => (string)$address]);
+    return $this->render('index', ['name' => $user['first_name'], 'authBlock' => $authBlock, 'address' => (string)$address]);
   }
 
   public function actionLogin() {
-    $vk_auth = $this->getVkAuthButton();
+    $authBlock = $this->getAuthButton();
 
     return $this->render('login', [
-      'vk_auth' => $vk_auth,
+      'authBlock' => $authBlock,
     ]);
   }
 
@@ -100,22 +96,22 @@ class SiteController extends Controller {
     return $this->goHome();
   }
 
-  private function getVkAuthButton(): string {
-    return YII_ENV === 'dev' ? $this->renderPartial('auth/vk_int') : $this->renderPartial('auth/vk_ext');
+  private function getAuthButton(): string {
+    if (!Yii::$app->getUser()->isGuest) {
+      return $this->renderPartial('auth/logout');
+    }
+
+    return YII_ENV === 'dev' ? $this->renderPartial('auth/internal') : $this->renderPartial('auth/external');
   }
 
   public function goLogin() {
     return $this->response->redirect('/site/login');
   }
 
-  /**
-   * Logs out the current user.
-   *
-   * @return mixed
-   */
   public function actionLogout() {
     Yii::$app->user->logout();
+    Yii::$app->response->cookies->removeAll();
 
-    return $this->goHome();
+    return $this->goLogin();
   }
 }

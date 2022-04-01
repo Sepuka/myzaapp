@@ -3,7 +3,7 @@
 use yii\bootstrap4\Html;
 
 /**
- * @var string $vk_auth
+ * @var string $authBlock
  */
 ?>
 
@@ -12,4 +12,4 @@ use yii\bootstrap4\Html;
     <h1 class="display-5 fw-bold">Войдите пожалуйста</h1>
 </div>
 
-<?= $vk_auth ?>
+<?= $authBlock ?>

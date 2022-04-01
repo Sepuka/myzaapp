@@ -3,7 +3,7 @@
 use yii\bootstrap4\Html;
 
 /**
- * @var string $vk_auth
+ * @var string $authBlock
  * @var string $name
  * @var string $address
  */
@@ -13,9 +13,9 @@ use yii\bootstrap4\Html;
     <?=Html::img( '@web/images/logo.jpeg', ['class' => 'd-block mx-auto mb-4', 'width'=>'72', 'height'=>'72'])?>
     <h1 class="display-5 fw-bold">Привет, <?=$name?>!</h1>
     <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Ваш адрес в сети blockchain <a href="https://www.blockchain.com/btc/address/<?=$address?>"><?=$address?></a></p>
         <p class="lead mb-4">Твой баланс составляет 0.0043 ₿ (567 рублей), ты ещё не выводил средства на карту, с начала
             работы котла ты уже получил 14 пополнений.</p>
-        <p class="lead mb-4">Ваш адрес: <a href="https://www.blockchain.com/btc/address/<?=$address?>"><?=$address?></a></p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Запросить вывод</button>
             <button type="button" class="btn btn-outline-secondary btn-lg px-4">Посмотреть журнал</button>
@@ -23,7 +23,7 @@ use yii\bootstrap4\Html;
     </div>
 </div>
 
-<?=$vk_auth?>
+<?=$authBlock?>
 
 <!--<div class="text-center">-->
 <!--    <a href="https://oauth.yandex.ru/authorize?response_type=token&client_id=c6bf4a0e603946c594f20603c2babc6d">Войти через Яндекс</a>-->
