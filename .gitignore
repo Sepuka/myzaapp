@@ -1,7 +1,5 @@
 .idea/
 .DS_Store/
-cfg/config.php
-log/log.txt
 
 log/frontend-access.log
 log/frontend-error.log

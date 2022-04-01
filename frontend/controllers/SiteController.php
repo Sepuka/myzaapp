@@ -38,11 +38,8 @@ class SiteController extends Controller {
         ],
         'denyCallback' => function($rule, $action) {
           $token = Yii::$app->request->cookies->get('token');
-          if ($token === null) {
-            return;
-          }
 
-          $this->redirect('site/auth');
+          $this->redirect($token ? 'site/auth' : 'site/login');
         },
       ],
     ];
