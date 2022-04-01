@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\User;
 use frontend\models\Users;
 use Yii;
 use yii\web\Controller;
@@ -58,15 +59,10 @@ class SiteController extends Controller {
   public function actionIndex() {
     $authBlock = $this->getAuthButton();
 
-    $token = $this->request->cookies->get('token');
-    if ($token === null) {
-      return $this->redirect('site/login');
-    }
+    /** @var User $user */
+    $user = Yii::$app->getUser()->identity;
 
-    $user    = Yii::$app->getUser()->identity;
-    $address = (new Users())->getAddress($user->getId());
-
-    return $this->render('index', ['name' => $user['first_name'], 'authBlock' => $authBlock, 'address' => (string)$address]);
+    return $this->render('index', ['name' => $user['first_name'], 'authBlock' => $authBlock, 'crypto' => $user->crypto]);
   }
 
   public function actionLogin() {

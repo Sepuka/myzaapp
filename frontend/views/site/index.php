@@ -1,11 +1,12 @@
 <?php
 
+use common\models\Crypto;
 use yii\bootstrap4\Html;
 
 /**
  * @var string $authBlock
  * @var string $name
- * @var string $address
+ * @var Crypto $crypto
  */
 
 ?>
@@ -13,8 +14,8 @@ use yii\bootstrap4\Html;
     <?=Html::img( '@web/images/logo.jpeg', ['class' => 'd-block mx-auto mb-4', 'width'=>'72', 'height'=>'72'])?>
     <h1 class="display-5 fw-bold">Привет, <?=$name?>!</h1>
     <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Ваш адрес в сети blockchain <a href="https://www.blockchain.com/btc/address/<?=$address?>"><?=$address?></a></p>
-        <p class="lead mb-4">Твой баланс составляет 0.0043 ₿ (567 рублей), ты ещё не выводил средства на карту, с начала
+        <p class="lead mb-4">Ваш адрес в сети blockchain <a href="https://www.blockchain.com/btc/address/<?=$crypto->address?>"><?=$crypto->address?></a></p>
+        <p class="lead mb-4">Твой баланс составляет <?=$crypto->getBalance()?> ₿ (567 рублей), ты ещё не выводил средства на карту, с начала
             работы котла ты уже получил 14 пополнений.</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Запросить вывод</button>
