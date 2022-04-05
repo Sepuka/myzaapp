@@ -10,21 +10,37 @@ use yii\bootstrap4\Html;
  */
 
 ?>
-<div class="px-4 py-5 my-5 text-center">
-    <?=Html::img( '@web/images/logo.jpeg', ['class' => 'd-block mx-auto mb-4', 'width'=>'72', 'height'=>'72'])?>
-    <h1 class="display-5 fw-bold">Привет, <?=$name?>!</h1>
-    <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Ваш адрес в сети blockchain <a href="https://www.blockchain.com/btc/address/<?=$crypto->address?>"><?=$crypto->address?></a></p>
-        <p class="lead mb-4">Твой баланс составляет <?=$crypto->getBalance()?> ₿ (567 рублей), ты ещё не выводил средства на карту, с начала
-            работы котла ты уже получил 14 пополнений.</p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Запросить вывод</button>
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4">Посмотреть журнал</button>
-        </div>
+
+<div class="card w-50 text-center mx-auto">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="/site/login">Логин</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="true" href="#">Профиль</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" aria-disabled="true">Журнал</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" aria-disabled="true">Выплаты</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Привет, <?= $name ?>!</h5>
+        <p class="card-text">
+          <?= Html::img('@web/images/logo.jpeg', ['class' => 'd-block mx-auto mb-4', 'width' => '72', 'height' => '72']) ?>
+        <p class="lead mb-4">Ваш адрес в сети blockchain <a
+                    href="https://www.blockchain.com/btc/address/<?= $crypto->address ?>"><?= $crypto->address ?></a>
+        </p>
+        <p class="lead mb-4">Ваш баланс составляет <?= $crypto->getBalance() ?>₿ (567 рублей), ты ещё не выводил
+            средства на карту, с начала
+            работы котла ты уже получил N пополнений.</p>
+        </p>
     </div>
 </div>
-
-<?=$authBlock?>
 
 <!--<div class="text-center">-->
 <!--    <a href="https://oauth.yandex.ru/authorize?response_type=token&client_id=c6bf4a0e603946c594f20603c2babc6d">Войти через Яндекс</a>-->

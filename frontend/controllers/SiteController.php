@@ -3,7 +3,6 @@
 namespace frontend\controllers;
 
 use common\models\User;
-use frontend\models\Users;
 use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
@@ -70,6 +69,7 @@ class SiteController extends Controller {
 
     return $this->render('login', [
       'authBlock' => $authBlock,
+      'email'     => $this->getUser()->email,
     ]);
   }
 
@@ -109,5 +109,9 @@ class SiteController extends Controller {
     Yii::$app->response->cookies->removeAll();
 
     return $this->goLogin();
+  }
+
+  private function getUser(): User {
+    return Yii::$app->user->getIdentity();
   }
 }
