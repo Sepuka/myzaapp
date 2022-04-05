@@ -1,11 +1,15 @@
 <?php
 
+use common\models\User;
+
 $isGuest = Yii::$app->user->isGuest;
 
 /**
  * @var string $authBlock
- * @var string $email
+ * @var ?User $user
  */
+
+$email = $user ? sprintf('Ваша почта %s', $user->email) : '';
 ?>
 
 <div class="card w-50 text-center mx-auto">
@@ -27,7 +31,7 @@ $isGuest = Yii::$app->user->isGuest;
     </div>
     <div class="card-body">
         <h5 class="card-title"><?= $isGuest ? 'Войдите, пожалуйста' : 'Вы вошли' ?></h5>
-        <p class="card-text"><?= $isGuest ? 'Чтобы пользоваться duntek вам следует войти в свою учетную запись' : sprintf('Ваша почта %s', $email) ?></p>
+        <p class="card-text"><?= $isGuest ? 'Чтобы пользоваться duntek вам следует войти в свою учетную запись' : $email ?></p>
       <?= $authBlock ?>
     </div>
 </div>

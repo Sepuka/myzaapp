@@ -34,7 +34,7 @@ class SiteController extends Controller {
         'denyCallback' => function($rule, $action) {
           $token = Yii::$app->request->cookies->get('token');
 
-          $this->redirect($token ? 'site/auth' : 'site/login');
+          $this->redirect($token ? '/site/auth' : '/site/login');
         },
       ],
     ];
@@ -69,7 +69,7 @@ class SiteController extends Controller {
 
     return $this->render('login', [
       'authBlock' => $authBlock,
-      'email'     => $this->getUser()->email,
+      'user'      => $this->getUser(),
     ]);
   }
 
@@ -111,7 +111,7 @@ class SiteController extends Controller {
     return $this->goLogin();
   }
 
-  private function getUser(): User {
+  private function getUser(): ?User {
     return Yii::$app->user->getIdentity();
   }
 }
