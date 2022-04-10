@@ -12,7 +12,7 @@ $isGuest = Yii::$app->user->isGuest;
 $email = $user ? sprintf('Ваша почта %s', $user->email) : '';
 ?>
 
-<div class="card w-50 text-center mx-auto">
+<div class="card w-50 text-center mx-auto" style="min-width: 400px">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
