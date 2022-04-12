@@ -33,12 +33,15 @@ class AuthController extends Controller {
       ]),
     );
 
-    $session           = new Session();
-    $session->user_id  = 1;
-    $session->token    = 'secret_token_test';
-    $session->datetime = date('Y-m-d H:i:s');
-    $session->o_auth   = 2;
-    $session->save();
+    $session = Session::findOne([Session::FIELD_USER_ID => 1]);
+    if ($session === null) {
+      $session           = new Session();
+      $session->user_id  = 1;
+      $session->token    = 'secret_token_test';
+      $session->datetime = date('Y-m-d H:i:s');
+      $session->o_auth   = 2;
+      $session->save();
+    }
 
     $this->response->redirect('/');
   }

@@ -3,7 +3,6 @@
 namespace frontend\controllers;
 
 use common\models\Session;
-use common\models\User;
 use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
@@ -59,17 +58,18 @@ class SiteController extends Controller {
 
   public function actionIndex() {
     $session = $this->getIdentity();
-    $user = $session->user;
+    $user    = $session->user;
 
     return $this->render('index', ['name' => $user['first_name'], 'crypto' => $user->crypto]);
   }
 
   public function actionLogin() {
     $authBlock = $this->getAuthButton();
+    $identity  = $this->getIdentity();
 
     return $this->render('login', [
       'authBlock' => $authBlock,
-      'user'      => $this->getIdentity()->user,
+      'user'      => $identity->user ?? null,
     ]);
   }
 
@@ -83,10 +83,10 @@ class SiteController extends Controller {
       return $this->goLogin();
     }
 
-    Yii::$app->user->loginByAccessToken($token);
+    Yii::$app->user->loginByAccessToken($token->value);
 
     if (Yii::$app->user->isGuest) {
-      return $this->goLogin();
+      return $this->goLogout();
     }
 
     return $this->goHome();
@@ -100,21 +100,25 @@ class SiteController extends Controller {
     return YII_ENV === 'dev' ? $this->renderPartial('auth/internal') : $this->renderPartial('auth/external');
   }
 
-  public function goLogin() {
+  public function goLogin(): Response {
     return $this->response->redirect('/site/login');
   }
 
-  public function actionLogout() {
+  public function goLogout(): Response {
+    return $this->response->redirect('/site/logout');
+  }
+
+  public function actionLogout(): Response {
     Yii::$app->user->logout();
     Yii::$app->response->cookies->removeAll();
 
     return $this->goLogin();
   }
 
-  private function getIdentity(): Session {
-    /** @var Session $session */
-    $session = Yii::$app->user;
+  private function getIdentity(): ?Session {
+    /** @var \yii\web\User $user */
+    $user = Yii::$app->user;
 
-    return $session->identity;
+    return $user->identity;
   }
 }
