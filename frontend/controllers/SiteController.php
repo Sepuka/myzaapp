@@ -2,10 +2,12 @@
 
 namespace frontend\controllers;
 
+use common\models\Session;
 use common\models\User;
 use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
+use yii\web\Response;
 
 /**
  * Site controller
@@ -56,12 +58,10 @@ class SiteController extends Controller {
   }
 
   public function actionIndex() {
-    $authBlock = $this->getAuthButton();
+    $session = $this->getIdentity();
+    $user = $session->user;
 
-    /** @var User $user */
-    $user = Yii::$app->getUser()->identity;
-
-    return $this->render('index', ['name' => $user['first_name'], 'authBlock' => $authBlock, 'crypto' => $user->crypto]);
+    return $this->render('index', ['name' => $user['first_name'], 'crypto' => $user->crypto]);
   }
 
   public function actionLogin() {
@@ -69,11 +69,11 @@ class SiteController extends Controller {
 
     return $this->render('login', [
       'authBlock' => $authBlock,
-      'user'      => $this->getUser(),
+      'user'      => $this->getIdentity()->user,
     ]);
   }
 
-  public function actionAuth() {
+  public function actionAuth(): Response {
     if (!Yii::$app->user->isGuest) {
       return $this->goHome();
     }
@@ -111,7 +111,10 @@ class SiteController extends Controller {
     return $this->goLogin();
   }
 
-  private function getUser(): ?User {
-    return Yii::$app->user->getIdentity();
+  private function getIdentity(): Session {
+    /** @var Session $session */
+    $session = Yii::$app->user;
+
+    return $session->identity;
   }
 }

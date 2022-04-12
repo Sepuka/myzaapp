@@ -2,46 +2,34 @@
 
 namespace common\models;
 
-use phpDocumentor\Reflection\Types\Integer;
-use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQueryInterface;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
  * @property integer $user_id
- * @property integer $created_at
- * @property integer $updated_at
- * @property integer $o_auth
- * @property string $external_id
- * @property string $email
  * @property string $token
- * @property string $first_name
- * @property string $last_name
- * @property bool $active
- * @property Crypto crypto
+ * @property integer $datetime
+ * @property integer $o_auth
+ * @property User $user
+ * @property IdentityInterface $identity
  */
-class User extends ActiveRecord implements IdentityInterface {
+class Session extends ActiveRecord implements IdentityInterface {
   public const FIELD_USER_ID = 'user_id';
 
   public static function tableName(): string {
-    return 'users';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function behaviors(): array {
-    return [
-      TimestampBehavior::class,
-    ];
+    return 'sessions';
   }
 
   /**
    * {@inheritdoc}
    */
   public static function findIdentity($id) {
-    return static::findOne(['user_id' => $id]);
+    if (isset($id[self::FIELD_USER_ID])) {
+      return static::findOne(['user_id' => $id[self::FIELD_USER_ID]]);
+    }
+
+    return null;
   }
 
   /**
@@ -55,7 +43,7 @@ class User extends ActiveRecord implements IdentityInterface {
    * {@inheritdoc}
    */
   public function getId() {
-    return $this->getPrimaryKey();
+    return $this->getPrimaryKey()[self::FIELD_USER_ID];
   }
 
   /**
@@ -72,7 +60,7 @@ class User extends ActiveRecord implements IdentityInterface {
     return $this->getAuthKey() === $authKey;
   }
 
-  public function getCrypto(): ActiveQueryInterface {
-    return $this->hasOne(Crypto::class, [self::FIELD_USER_ID => Crypto::FIELD_USER_ID]);
+  public function getUser(): ActiveQueryInterface {
+    return $this->hasOne(User::class, [self::FIELD_USER_ID => User::FIELD_USER_ID]);
   }
 }

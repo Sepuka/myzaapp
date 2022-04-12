@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Session;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Cookie;
@@ -31,6 +32,13 @@ class AuthController extends Controller {
         'path'   => '/',
       ]),
     );
+
+    $session           = new Session();
+    $session->user_id  = 1;
+    $session->token    = 'secret_token_test';
+    $session->datetime = date('Y-m-d H:i:s');
+    $session->o_auth   = 2;
+    $session->save();
 
     $this->response->redirect('/');
   }

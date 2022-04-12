@@ -4,7 +4,6 @@ use common\models\Crypto;
 use yii\bootstrap4\Html;
 
 /**
- * @var string $authBlock
  * @var string $name
  * @var Crypto $crypto
  */
