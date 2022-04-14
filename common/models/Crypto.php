@@ -20,11 +20,13 @@ class Crypto extends ActiveRecord {
   public const FIELD_BALANCE    = 'balance';
   public const FIELD_UPDATED_AT = 'updated_at';
 
+  public const MULTIPLIER = 10e8;
+
   public static function tableName() {
     return self::TABLE_NAME;
   }
 
   public function getBalance(): string {
-    return sprintf('%f', $this->balance);
+    return sprintf('%f', $this->balance / self::MULTIPLIER);
   }
 }
