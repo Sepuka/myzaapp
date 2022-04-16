@@ -22,7 +22,7 @@ class Crypto extends ActiveRecord {
   public const FIELD_UPDATED_AT = 'updated_at';
   public const FIELD_FIAT       = 'fiat';
 
-  public const MULTIPLIER = 10e8;
+  public const MULTIPLIER = 10e7;
 
   public static function tableName() {
     return self::TABLE_NAME;
