@@ -34,10 +34,10 @@ use yii\bootstrap4\Html;
         <p class="lead mb-4">Ваш адрес в сети blockchain <a
                     href="https://www.blockchain.com/btc/address/<?= $crypto->address ?>"><?= $crypto->address ?></a>
         </p>
-        <p class="lead mb-4">Ваш баланс составляет <?= $crypto->getBalance() ?>₿ (<?= $crypto->getFiat() ?> руб), ты ещё
-            не выводил
+        <p class="lead mb-4">Ваш баланс составляет <?= $crypto->getBalance() ?>₿ (<?= $crypto->getFiat() ?> руб), вы ещё
+            не выводили
             средства на карту, с начала
-            работы котла ты уже получил N пополнений.</p>
+            работы котла вы уже получили 0 пополнений.</p>
         </p>
     </div>
 </div>
