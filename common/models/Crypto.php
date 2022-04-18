@@ -33,6 +33,6 @@ class Crypto extends ActiveRecord {
   }
 
   public function getFiat(): string {
-    return $this->fiat;
+    return (string)$this->fiat;
   }
 }

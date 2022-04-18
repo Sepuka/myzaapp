@@ -10,7 +10,7 @@ use yii\bootstrap4\Html;
 
 ?>
 
-<div class="card w-50 text-center mx-auto" style="min-width: 400px">
+<div class="card w-50 text-center mx-auto mt-1" style="min-width: 400px">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
