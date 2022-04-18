@@ -14,8 +14,9 @@ use yii\web\IdentityInterface;
  * @property User $user
  */
 class Session extends ActiveRecord implements IdentityInterface {
-  public const FIELD_USER_ID = 'user_id';
-  public const FIELD_TOKEN   = 'token';
+  public const FIELD_USER_ID    = 'user_id';
+  public const FIELD_TOKEN      = 'token';
+  public const FIELD_SESSION_ID = 'session_id';
 
   public static function tableName(): string {
     return 'sessions';
@@ -29,7 +30,7 @@ class Session extends ActiveRecord implements IdentityInterface {
     if (is_array($id)) {
       return null;
     }
-    return static::findOne(['user_id' => $id,]);
+    return static::findOne([self::FIELD_SESSION_ID => $id,]);
   }
 
   /**
@@ -62,9 +63,5 @@ class Session extends ActiveRecord implements IdentityInterface {
 
   public function getUser(): ActiveQueryInterface {
     return $this->hasOne(User::class, [self::FIELD_USER_ID => User::FIELD_USER_ID]);
-  }
-
-  public function __toString() {
-    return sprintf('%d_%s', $this->user_id, $this->token);
   }
 }

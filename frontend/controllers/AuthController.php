@@ -24,20 +24,21 @@ class AuthController extends Controller {
   }
 
   public function actionAuth() {
+    $token = 'secret_token_test'.time();
     $this->response->cookies->add(
       new Cookie([
         'name'   => 'token',
-        'value'  => 'secret_token_test',
+        'value'  => $token,
         'domain' => 'dev.duntek',
         'path'   => '/',
       ]),
     );
 
-    $session = Session::findOne([Session::FIELD_USER_ID => 1]);
+    $session = Session::findOne([Session::FIELD_TOKEN => $token]);
     if ($session === null) {
       $session           = new Session();
       $session->user_id  = 1;
-      $session->token    = 'secret_token_test';
+      $session->token    = $token;
       $session->datetime = date('Y-m-d H:i:s');
       $session->o_auth   = 2;
       $session->save();
