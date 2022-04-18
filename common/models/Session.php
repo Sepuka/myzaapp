@@ -25,6 +25,10 @@ class Session extends ActiveRecord implements IdentityInterface {
    * {@inheritdoc}
    */
   public static function findIdentity($id) {
+    // TODO tmp
+    if (is_array($id)) {
+      return null;
+    }
     return static::findOne(['user_id' => $id,]);
   }
 
