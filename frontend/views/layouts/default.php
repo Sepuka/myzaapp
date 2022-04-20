@@ -1,5 +1,6 @@
 <?php
 
+use frontend\assets\AppAsset;
 use yii\web\View;
 
 /**
@@ -7,10 +8,11 @@ use yii\web\View;
  * @var string $content
  */
 
+AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
     <!doctype html>
-    <html lang="en">
+    <html lang="ru" class="h-100">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,21 +37,14 @@ use yii\web\View;
         </noscript>
         <!-- /Yandex.Metrika counter -->
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-              crossorigin="anonymous">
+        <?php $this->head(); ?>
 
-        <title>криптокотельная</title>
+        <title>криптокотельная duntek</title>
     </head>
-    <body>
+    <body class="d-flex h-100 text-center text-white bg-dark">
     <?php $this->beginBody() ?>
     <?= $content ?>
     <?php $this->endBody() ?>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
-
     </body>
     </html>
 <?php $this->endPage();

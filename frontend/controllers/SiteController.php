@@ -23,7 +23,7 @@ class SiteController extends Controller {
         'class'        => AccessControl::class,
         'rules'        => [
           [
-            'actions' => ['login', 'logout', 'auth'],
+            'actions' => ['login', 'logout', 'auth', 'about'],
             'allow'   => true,
           ],
           [
@@ -35,7 +35,7 @@ class SiteController extends Controller {
         'denyCallback' => function($rule, $action) {
           $token = Yii::$app->request->cookies->get('token');
 
-          $this->redirect($token ? '/site/auth' : '/site/login');
+          $this->redirect($token ? '/site/auth' : '/site/about');
         },
       ],
     ];
@@ -60,7 +60,14 @@ class SiteController extends Controller {
     $session = $this->getIdentity();
     $user    = $session->user;
 
-    return $this->render('index', ['name' => $user['first_name'], 'crypto' => $user->crypto]);
+    return $this->render(
+      'index',
+      [
+        'name'   => $user['first_name'],
+        'crypto' => $user->crypto,
+        'social' => Yii::$app->params['social'],
+      ]
+    );
   }
 
   public function actionLogin() {
@@ -70,6 +77,7 @@ class SiteController extends Controller {
     return $this->render('login', [
       'authBlock' => $authBlock,
       'user'      => $identity->user ?? null,
+      'social'    => Yii::$app->params['social'],
     ]);
   }
 
@@ -113,6 +121,10 @@ class SiteController extends Controller {
     Yii::$app->response->cookies->removeAll();
 
     return $this->goLogin();
+  }
+
+  public function actionAbout(): string {
+    return $this->render('about', ['social' => Yii::$app->params['social']]);
   }
 
   private function getIdentity(): ?Session {

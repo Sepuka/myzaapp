@@ -1,5 +1,8 @@
-<div class="text-center">
-  <a href="/site/logout">
-    <button type="button" class="btn btn-secondary btn-lg px-4">выйти</button>
-  </a>
-</div>
+<?php
+
+use rmrevin\yii\fontawesome\FAS;
+
+?>
+<a href="/site/logout" class="btn btn-lg btn-secondary fw-bold border-white bg-white">
+  <?= FAS::icon('hiking') ?>&nbsp;выйти
+</a>

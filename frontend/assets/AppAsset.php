@@ -2,22 +2,25 @@
 
 namespace frontend\assets;
 
+use rmrevin\yii\fontawesome\NpmFreeAssetBundle;
 use yii\web\AssetBundle;
 
-/**
- * Main frontend application asset bundle.
- */
-class AppAsset extends AssetBundle
-{
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
-    public $css = [
-        'css/site.css',
-    ];
-    public $js = [
-    ];
-    public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap4\BootstrapAsset',
-    ];
+class AppAsset extends AssetBundle {
+  public $basePath = '@webroot';
+  public $baseUrl = '@web';
+  public $css = [
+    'css/site.css',
+    'css/cover.css',
+  ];
+  public $js = [
+    'https://kit.fontawesome.com/72fe3abd58.js',
+  ];
+  public $jsOptions = ['crossorigin' => 'anonymous'];
+
+  public $depends = [
+    'yii\web\YiiAsset',
+    'yii\bootstrap5\BootstrapAsset',
+    #'rmrevin\yii\fontawesome\CdnFreeAssetBundle',
+    //'rmrevin\yii\fontawesome\NpmFreeAssetBundle',
+  ];
 }
