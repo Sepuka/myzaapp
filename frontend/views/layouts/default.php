@@ -1,6 +1,7 @@
 <?php
 
 use frontend\assets\AppAsset;
+use rmrevin\yii\fontawesome\CdnFreeAssetBundle;
 use yii\web\View;
 
 /**

@@ -10,9 +10,8 @@ class AppAsset extends AssetBundle {
   public $css = [
     'css/site.css',
     'css/cover.css',
-    'https://use.fontawesome.com/releases/v5.15.4/css/all.css',
+    'css/fontawesome.min.css',
   ];
-  public $cssOptions = ['crossorigin' => 'anonymous'];
   public $js = [
     'https://kit.fontawesome.com/72fe3abd58.js',
   ];

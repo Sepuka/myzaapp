@@ -49,6 +49,15 @@ return [
         ],
       ],
     ],
+    'view'         => [
+      'class'                   => \daxslab\taggedview\View::class,
+      'locale'                  => 'RU',
+      'title'                   => 'Отопитель для частного дома на основе тепла от майнинга',
+      'description'             => 'Криптокотёл Duntek добывает криптовалюту Bitcoin и использует высвободившееся тепло для отопления вашего дома',
+      'image'                   => '/images/og_img.png',
+      'site_name'               => 'duntek',
+      'registerTwitterCardTags' => false,
+    ],
   ],
   'params'              => $params,
 ];
