@@ -2,6 +2,8 @@
 
 namespace backend\controllers;
 
+use backend\models\Crypto;
+use backend\models\User;
 use common\models\LoginForm;
 use Yii;
 use yii\filters\VerbFilter;
@@ -58,7 +60,10 @@ class SiteController extends Controller {
    * @return string
    */
   public function actionIndex() {
-    return $this->render('index');
+    $user   = new User();
+    $crypto = new Crypto();
+
+    return $this->render('index', ['user' => $user, 'crypto' => $crypto]);
   }
 
   /**
