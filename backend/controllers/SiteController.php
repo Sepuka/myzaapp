@@ -4,12 +4,14 @@ namespace backend\controllers;
 
 use backend\models\Crypto;
 use backend\models\User;
-use common\models\LoginForm;
+use backend\models\LoginForm;
+use console\models\Permissions;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
+use yii\web\ErrorAction;
 
 /**
  * Site controller
@@ -21,8 +23,8 @@ class SiteController extends Controller {
   public function behaviors() {
     return [
       'access' => [
-        'class' => AccessControl::className(),
-        'rules' => [
+        'class'        => AccessControl::className(),
+        'rules'        => [
           [
             'actions' => ['login', 'error'],
             'allow'   => true,
@@ -31,6 +33,7 @@ class SiteController extends Controller {
             'actions' => ['logout', 'index'],
             'allow'   => true,
             'ips'     => Yii::$app->params['adminIPs'],
+            'roles'   => [Permissions::READ_ADMIN_PANEL,],
           ],
         ],
       ],
@@ -49,17 +52,12 @@ class SiteController extends Controller {
   public function actions() {
     return [
       'error' => [
-        'class' => 'yii\web\ErrorAction',
+        'class' => ErrorAction::class,
       ],
     ];
   }
 
-  /**
-   * Displays homepage.
-   *
-   * @return string
-   */
-  public function actionIndex() {
+  public function actionIndex(): string {
     $user   = new User();
     $crypto = new Crypto();
 
@@ -77,7 +75,6 @@ class SiteController extends Controller {
     }
 
     $this->layout = 'blank';
-
     $model = new LoginForm();
     if ($model->load(Yii::$app->request->post()) && $model->login()) {
       return $this->goBack();

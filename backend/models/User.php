@@ -5,6 +5,7 @@ namespace backend\models;
 use yii\db\ActiveRecord;
 
 /**
+ * This model presents our client, it needs for admin workflow
  * @property integer $user_id
  * @property integer $created_at
  * @property integer $updated_at

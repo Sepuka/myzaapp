@@ -1,4 +1,7 @@
 <?php
+
+use yii\rbac\DbManager;
+
 return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -8,6 +11,9 @@ return [
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',
+        ],
+        'authManager' => [
+          'class' => DbManager::class,
         ],
     ],
 ];

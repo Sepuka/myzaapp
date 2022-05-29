@@ -6,6 +6,7 @@ use common\models\Session;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Cookie;
+use yii\web\Response;
 
 class AuthController extends Controller {
   public function behaviors() {
@@ -23,7 +24,7 @@ class AuthController extends Controller {
     ];
   }
 
-  public function actionAuth() {
+  public function actionAuth(): Response {
     $token = 'secret_token_test'.time();
     $this->response->cookies->add(
       new Cookie([

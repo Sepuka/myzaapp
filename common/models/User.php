@@ -9,6 +9,7 @@ use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
+ * This class presents our client who works with it
  * @property integer $user_id
  * @property integer $created_at
  * @property integer $updated_at
