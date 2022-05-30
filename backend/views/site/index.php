@@ -101,7 +101,7 @@ $this->title = 'duntek admin dashboard';
                     <use xlink:href="#speedometer2"></use>
                 </svg>
             </div>
-            <h2>Текущий баланс</h2>
+            <h2>Суммарный баланс duntek</h2>
             <p>В сумме у нас <?=$crypto->getTotalAmount()?> ₿</p>
             <a href="#" class="icon-link d-inline-flex align-items-center">
                 Подробнее
