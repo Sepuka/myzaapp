@@ -3,6 +3,8 @@
 namespace frontend\assets;
 
 use yii\web\AssetBundle;
+use yii\bootstrap5\BootstrapAsset;
+use yii\web\YiiAsset;
 
 class AppAsset extends AssetBundle {
   public $basePath = '@webroot';
@@ -18,7 +20,7 @@ class AppAsset extends AssetBundle {
   public $jsOptions = ['crossorigin' => 'anonymous'];
 
   public $depends = [
-    'yii\web\YiiAsset',
-    'yii\bootstrap5\BootstrapAsset',
+    YiiAsset::class,
+    BootstrapAsset::class,
   ];
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\Widget;
+namespace frontend\widget;
 
 use rmrevin\yii\fontawesome\FAB;
 use yii\bootstrap5\Nav;
@@ -10,7 +10,6 @@ class Social extends Widget {
   public array $social = [];
 
   public function run() {
-    /** @var array $social */
     $items = [
       [
         'label' => FAB::icon('instagram'),
