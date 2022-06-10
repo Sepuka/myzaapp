@@ -1,7 +1,7 @@
 <?php
 
 use frontend\widget\NarrowNavButton;
-use frontend\Widget\Social;
+use frontend\widget\Social;
 use rmrevin\yii\fontawesome\FAB;
 
 /** @var array $social */
@@ -16,7 +16,6 @@ use rmrevin\yii\fontawesome\FAB;
                 <nav class="nav nav-masthead justify-content-center float-md-end">
                     <a class="nav-link" href="/site/login">Логин</a>
                     <a class="nav-link" href="/">Профиль</a>
-                    <a class="nav-link disabled" href="#" aria-disabled="true">Журнал</a>
                     <a class="nav-link disabled" href="#" aria-disabled="true">Выплаты</a>
                     <a class="nav-link activetab" href="/site/about" aria-current="page">О проекте</a>
                 </nav>

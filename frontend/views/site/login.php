@@ -21,7 +21,6 @@ $email = $user ? sprintf('Ваша почта %s', $user->email) : '';
             <nav class="nav nav-masthead justify-content-center float-md-end">
                 <a class="nav-link activetab" href="/site/login" aria-current="page">Логин</a>
                 <a class="nav-link" href="/">Профиль</a>
-                <a class="nav-link disabled" href="#" aria-disabled="true">Журнал</a>
                 <a class="nav-link disabled" href="#" aria-disabled="true">Выплаты</a>
                 <a class="nav-link" href="/site/about">О проекте</a>
             </nav>
