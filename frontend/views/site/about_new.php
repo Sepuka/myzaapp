@@ -1,6 +1,6 @@
 <?php
 
-use frontend\Widget\Social;
+use frontend\widget\Social;
 use rmrevin\yii\fontawesome\FAB;
 
 /** @var array $social */

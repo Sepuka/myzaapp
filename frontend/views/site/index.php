@@ -1,7 +1,7 @@
 <?php
 
 use common\models\Crypto;
-use frontend\Widget\Social;
+use frontend\widget\Social;
 
 /**
  * @var string $name

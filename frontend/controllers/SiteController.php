@@ -25,6 +25,7 @@ class SiteController extends Controller {
           [
             'actions' => ['login', 'logout', 'auth', 'about'],
             'allow'   => true,
+            'verbs' => ['GET']
           ],
           [
             'actions' => ['index'],

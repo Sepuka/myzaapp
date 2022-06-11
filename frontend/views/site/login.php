@@ -1,7 +1,7 @@
 <?php
 
 use common\models\User;
-use frontend\Widget\Social;
+use frontend\widget\Social;
 
 $isGuest = Yii::$app->user->isGuest;
 

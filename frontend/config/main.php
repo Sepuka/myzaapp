@@ -1,6 +1,7 @@
 <?php
 
 use common\models\Session;
+use daxslab\taggedview\View;
 
 $params = array_merge(
   require __DIR__ . '/../../common/config/params.php',
@@ -50,7 +51,7 @@ return [
       ],
     ],
     'view'         => [
-      'class'                   => \daxslab\taggedview\View::class,
+      'class'                   => View::class,
       'locale'                  => 'RU',
       'title'                   => 'Отопитель для частного дома на основе тепла от майнинга',
       'description'             => 'Криптокотёл Duntek добывает криптовалюту Bitcoin и использует высвободившееся тепло для отопления вашего дома',
