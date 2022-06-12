@@ -59,12 +59,12 @@ use rmrevin\yii\fontawesome\FAB;
                 </div>
             </div>
             <div  class="p-3">
-                <img src="/images/batch_testing.jpg">
+                <img src="/images/2.jpg">
             </div>
         </div>
         <div class="w-100 p-3 mx-auto sub-wide-block">
             <div class="p-3">
-                <img src="/images/noise.jpg">
+                <img src="/images/3.jpg">
             </div>
             <div class="p-3">
                 <div class="text-block-head">Не беспокойтесь на счет шума</div>
@@ -84,7 +84,7 @@ use rmrevin\yii\fontawesome\FAB;
                 </div>
             </div>
             <div class="p-3">
-                <img src="/images/men.jpg">
+                <img src="/images/4.jpg">
             </div>
         </div>
     </div>
