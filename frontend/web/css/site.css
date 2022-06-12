@@ -132,6 +132,9 @@ ul.nav svg {
   .sub-wide-block div {
     flex-direction: column;
   }
+  .lead {
+    font-size: 1rem;
+  }
 }
 
 .sub-wide-block img {
