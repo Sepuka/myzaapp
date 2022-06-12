@@ -154,7 +154,7 @@ ul.nav svg {
   font-size: 20px;
 }
 
-.background-img {
+.about-background-img {
   height: 100vh;
   background: linear-gradient( 180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.75) 60% ), url('/images/main.jpg') no-repeat;
   background-position: left top;

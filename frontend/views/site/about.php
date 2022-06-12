@@ -8,7 +8,7 @@ use rmrevin\yii\fontawesome\FAB;
 ?>
 
 <div class="multi-block mx-auto">
-    <div class="background-img">
+    <div class="about-background-img">
     <div class="d-flex w-100 h-100 p-3 mx-auto flex-column sub-narrow-block">
         <header class="mb-auto">
             <div class="block-h-5">
