@@ -7,7 +7,16 @@ use frontend\widget\Social;
  * @var string $name
  * @var Crypto $crypto
  * @var array $social
+ * @var \common\models\Withdrawal[] $withdrawals
  */
+
+if (count($withdrawals)) {
+  $amount        = array_sum(array_column($withdrawals, 'amount'));
+  $btc           = sprintf('%f', $amount / Crypto::MULTIPLIER);
+  $withdrawalMsg = sprintf('вы получили <b>%d</b> выводов средств на карту на общую сумму %f ₿', count($withdrawals), $btc);
+} else {
+  $withdrawalMsg = "вы ещё не выводили средства на карту, с начала работы котла вы уже получили 0 пополнений";
+}
 ?>
 
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -28,10 +37,8 @@ use frontend\widget\Social;
         <p class="lead">Ваш адрес в сети blockchain <a
                     href="https://www.blockchain.com/btc/address/<?= $crypto->address ?>"><?= $crypto->address ?></a>
         </p>
-        <p class="lead mb-4">Ваш баланс составляет <?= $crypto->getBalance() ?>₿ (<?= $crypto->getFiat() ?> руб), вы ещё
-            не выводили
-            средства на карту, с начала
-            работы котла вы уже получили 0 пополнений.</p>
+        <p class="lead mb-4">Ваш баланс составляет <?= $crypto->getBalance() ?>₿ (<?= $crypto->getFiat() ?>
+            руб), <?= $withdrawalMsg ?>.</p>
         </p>
     </main>
     <footer class="mt-auto text-white-50 d-flex justify-content-center">

@@ -24,8 +24,8 @@ class AuthController extends Controller {
     ];
   }
 
-  public function actionAuth(): Response {
-    $token = 'secret_token_test'.time();
+  public function actionAuth(): void {
+    $token = 'secret_token_test' . time();
     $this->response->cookies->add(
       new Cookie([
         'name'   => 'token',

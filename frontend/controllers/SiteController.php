@@ -25,7 +25,7 @@ class SiteController extends Controller {
           [
             'actions' => ['login', 'logout', 'auth', 'about'],
             'allow'   => true,
-            'verbs' => ['GET']
+            'verbs'   => ['GET'],
           ],
           [
             'actions' => ['index'],
@@ -58,15 +58,17 @@ class SiteController extends Controller {
   }
 
   public function actionIndex() {
-    $session = $this->getIdentity();
-    $user    = $session->user;
+    $session     = $this->getIdentity();
+    $user        = $session->user;
+    $withdrawals = $user->withdrawals;
 
     return $this->render(
       'index',
       [
-        'name'   => $user['first_name'],
-        'crypto' => $user->crypto,
-        'social' => Yii::$app->params['social'],
+        'name'        => $user['first_name'],
+        'crypto'      => $user->crypto,
+        'social'      => Yii::$app->params['social'],
+        'withdrawals' => $withdrawals,
       ]
     );
   }

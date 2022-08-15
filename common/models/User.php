@@ -4,6 +4,7 @@ namespace common\models;
 
 use phpDocumentor\Reflection\Types\Integer;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveQuery;
 use yii\db\ActiveQueryInterface;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
@@ -21,6 +22,7 @@ use yii\web\IdentityInterface;
  * @property string $last_name
  * @property bool $active
  * @property Crypto crypto
+ * @property Withdrawal[] $withdrawals
  */
 class User extends ActiveRecord implements IdentityInterface {
   public const FIELD_USER_ID = 'user_id';
@@ -75,5 +77,9 @@ class User extends ActiveRecord implements IdentityInterface {
 
   public function getCrypto(): ActiveQueryInterface {
     return $this->hasOne(Crypto::class, [self::FIELD_USER_ID => Crypto::FIELD_USER_ID]);
+  }
+
+  public function getWithdrawals(): ActiveQueryInterface {
+    return $this->hasMany(Withdrawal::class, [self::FIELD_USER_ID => Withdrawal::FIELD_USER_ID]);
   }
 }
